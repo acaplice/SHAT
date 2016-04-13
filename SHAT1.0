@@ -1,0 +1,27 @@
+print('Welcome to SHAT!!!')
+print("SHAT is a SwitcH Auotmation Tool!!")
+print('Now lets get sharted and SHAT out that config!!')
+input("Press Enter to Continue....")
+
+
+def start() :
+
+
+ print('What is the model of the new switch?')
+ans=True
+print('1. Cisco 3850')
+print('2. Cisco 3750X')
+ans= input()
+if ans == 1:
+    print('Moving to 3850 Config...')
+    while ans not in [1, 2]:
+        print('Selection not valid!')
+elif ans == 2:
+    print('Moving to 3750X Config')
+    while ans not in [1, 2]:
+        print('Selection not valid!')
+        break
+
+
+def start_3850():
+    ans= 1
