@@ -1,27 +1,58 @@
+from typing import List
+
+### functions ###
+
+def GetStringFromUser(minChar:int, maxChar:int, valueName:str, allowWhiteSpace:bool=False, validValueList:List[str]=None) -> str:
+    retStr = ""
+    while(len(retStr) < minChar or len(retStr) > maxChar):
+        retStr = input("{}: ".format(valueName))
+        if len(retStr) < minChar or len(retStr) > maxChar:
+            print("{} must be {} chars (min".format(valueName, minChar), end="")
+            if minChar == maxChar:
+                print ("/max)")
+            else:
+                print (") to {} chars (max)".format(maxChar))
+        if not allowWhiteSpace:
+            if " " in retStr or "\t" in retStr:
+                print("Spaces and/or Tabs are not permitted")
+                retStr = ""
+        if validValueList:
+            if not (retStr in validValueList):
+                print("{} is not a valid value".format(retStr))
+                retStr = ""
+    return retStr
+
+def StrToBool(boolStr:str) -> bool:
+    return (str(boolStr).lower().strip() in ("yes", "y", "true", "t", "1"))
+
+def start_3750x():
+    print('Doing 3750x setup...')
+
+def start_3850():
+    print('Doing 3850 setup...')
+
+
+
+
+
+### end functions ###
 print('Welcome to SHAT!!!')
 print("SHAT is a SwitcH Auotmation Tool!!")
 print('Now lets get sharted and SHAT out that config!!')
 input("Press Enter to Continue....")
 
+ans=""
+while not ans:
+    print('What is the model of the new switch?')
+    print('1. Cisco 3850')
+    print('2. Cisco 3750X')
+    ans = input()
+    if ans == "1":
+        start_3850()
+    elif ans == "2":
+        start_3750x()
+    else:
+        print('invalid choice. Try again')
+        ans=""
 
-def start() :
-
-
- print('What is the model of the new switch?')
-ans=True
-print('1. Cisco 3850')
-print('2. Cisco 3750X')
-ans= input()
-if ans == 1:
-    print('Moving to 3850 Config...')
-    while ans not in [1, 2]:
-        print('Selection not valid!')
-elif ans == 2:
-    print('Moving to 3750X Config')
-    while ans not in [1, 2]:
-        print('Selection not valid!')
-        break
-
-
-def start_3850():
-    ans= 1
+print("program ended...")
